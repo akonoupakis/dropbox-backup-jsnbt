@@ -1,0 +1,5 @@
+/node_modules
+/temp
+/test.js
+publish.js
+publish.targets.json
