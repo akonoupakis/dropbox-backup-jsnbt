@@ -1,28 +1,28 @@
 {
-	"name": "jsnbt-backup-dropbox",
-	"version": "1.0.1",
-	"description": "A backup utility for jsnbt installations with a dropbox target.",
-	"author": {
-		"name": "Apostolis Konoupakis",
-		"email": "konoupakis@gmail.com",
-		"url": ""
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/akonoupakis/jsnbt-backup-dropbox.git"
-	},
-	"bugs": {
-		"url": "https://github.com/akonoupakis/jsnbt-backup-dropbox/issues"
-	},
-	"main": "index.js",
-	"license": "MIT",
-	"homepage": "https://github.com/akonoupakis/jsnbt-backup-dropbox",
-	"dependencies": {
-		"dropbox-backup": "^1.0.3",
-		"extend": "^3.0.0",
-		"fs-extra": "^0.26.4",
-		"json-validation": "^1.0.4",
-		"server-root": "0.0.10-pre3",
-		"underscore": "^1.8.3"
-	}
+  "name": "jsnbt-backup-dropbox",
+  "version": "1.0.1",
+  "description": "A backup utility for jsnbt installations with a dropbox target.",
+  "author": {
+    "name": "Apostolis Konoupakis",
+    "email": "konoupakis@gmail.com",
+    "url": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akonoupakis/jsnbt-backup-dropbox.git"
+  },
+  "bugs": {
+    "url": "https://github.com/akonoupakis/jsnbt-backup-dropbox/issues"
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "homepage": "https://github.com/akonoupakis/jsnbt-backup-dropbox",
+  "dependencies": {
+    "dropbox-backup": "^1.0.4",
+    "extend": "^3.0.0",
+    "fs-extra": "^0.26.4",
+    "json-validation": "^1.0.4",
+    "server-root": "0.0.10-pre3",
+    "underscore": "^1.8.3"
+  }
 }
