@@ -1,21 +1,19 @@
 # jsnbt-backup-dropbox
+> a backup utility for jsnbt installations with a dropbox target
 
-> A backup utility for jsnbt installations with a dropbox target.
+![VERSION](https://img.shields.io/npm/v/jsnbt-backup-dropbox.svg)
+![DOWNLOADS](https://img.shields.io/npm/dt/jsnbt-backup-dropbox.svg)
+[![ISSUES](https://img.shields.io/github/issues-raw/akonoupakis/jsnbt-backup-dropbox.svg)](https://github.com/akonoupakis/jsnbt-backup-dropbox/issues)
+![LICENCE](https://img.shields.io/npm/l/jsnbt-backup-dropbox.svg)
+
+[![NPM](https://nodei.co/npm/jsnbt-backup-dropbox.png?downloads=true)](https://nodei.co/npm/jsnbt-backup-dropbox/)
 
 ## Overview
 
-This uses dropbox-backup internally, having the same functionality.
+This uses dropbox-backup internally, having the same functionality;
 reference [dropbox-backup](https://www.npmjs.com/package/dropbox-backup)
 
-## Install
-
-Install with [npm](https://www.npmjs.com/)
-
-```sh
-$ npm install jsnbt-backup-dropbox --save-dev
-```
-
-### Usage
+## Usage
 
 ```js
 var JsnbtBackup = require('jsnbt-backup-dropbox');
@@ -37,7 +35,10 @@ var backup = new JsnbtBackup({
     }
 });
 
+// upload the backup to the daily/weekly/monthly folders
 backup.run();
+// or upload a single backup as test.js 
+backup.run('test');
 ```
 
 
