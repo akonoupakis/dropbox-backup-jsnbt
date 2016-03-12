@@ -4,6 +4,7 @@ var spawn = require('child_process').spawn;
 var server = require('server-root');
 var jsonValidation = require('json-validation');
 var DropboxBackup = require('dropbox-backup');
+var log4js = require('log4js');
 var extend = require('extend');
 var _ = require('underscore');
 
@@ -72,7 +73,7 @@ var FolderProcessor = function () { };
 FolderProcessor.prototype.process = function (ctx, next) {
     fs.emptyDir('./temp/' + ctx.name, function (err) {
         if (err) {
-            ctx.error(ctx, err);
+            ctx.error(err);
         }
         else {
             next();
@@ -82,7 +83,7 @@ FolderProcessor.prototype.process = function (ctx, next) {
 
 var DatabaseBackupProcessor = function () { };
 DatabaseBackupProcessor.prototype.process = function (ctx, next) {
-    console.log('dumping database...');
+    ctx.log('dumping database...');
 
     var args = ['--host', ctx.options.database.host, '--port', ctx.options.database.port.toString(), '--db', ctx.options.database.name, '--out', server.getPath('temp/' + ctx.name + '/db')];
     var mongodump = spawn('mongodump', args);
@@ -99,7 +100,7 @@ DatabaseBackupProcessor.prototype.process = function (ctx, next) {
 
 var FilesBackupProcessor = function () { };
 FilesBackupProcessor.prototype.process = function (ctx, next) {
-    console.log('copying up files...');
+    ctx.log('copying up files...');
 
     fs.ensureDir('./temp/' + ctx.name + '/files', function (err) {
         if (err) {
@@ -153,14 +154,6 @@ ResetProcessor.prototype.process = function (ctx, next) {
     });
 };
 
-var ErrorHandler = function () { };
-ErrorHandler.prototype.handle = function (ctx, ex) {
-    var resetProcessor = new ResetProcessor();
-    resetProcessor.process(ctx, function () {
-        throw ex;
-    });
-};
-
 var JsnbtBackup = function (options) {
     var jv = new jsonValidation.JSONValidation();
     var validationResults = jv.validate(options, optionsSchema);
@@ -171,8 +164,6 @@ var JsnbtBackup = function (options) {
     this.options = options;
 
     this.name = 'bak';
-
-    this.errorHandler = new ErrorHandler();
 };
 
 JsnbtBackup.prototype.run = function (name) {
@@ -180,15 +171,24 @@ JsnbtBackup.prototype.run = function (name) {
 
     var nameInternal = typeof (name) === 'string' ? name : undefined;
 
+    var logger = log4js.getLogger('dropbox-backup');
+
     var ctx = {};
     ctx.name = self.name;
     ctx.options = self.options;
 
+    ctx.log = function(message) {
+        logger.info(message);
+    };
     ctx.error = function (ex) {
         if (typeof (ctx.cb) === 'function')
             ctx.cb(ex);
-        else
-            self.errorHandler.handle(ex);
+        else {
+            var resetProcessor = new ResetProcessor();
+            resetProcessor.process(ctx, function () {
+                logger.error(ex);
+            });
+        }
     };
 
     var processors = [];
@@ -198,8 +198,8 @@ JsnbtBackup.prototype.run = function (name) {
     processors.push(new DropboxProcessor(nameInternal));
     processors.push(new ResetProcessor());
     processors.push({
-        process: function () {
-            console.log('backup complete');
+        process: function (ctx) {
+            ctx.log('backup completed');
         }
     });
     var nextIndex = 0;
