@@ -1,6 +1,6 @@
 {
 	"name": "jsnbt-backup-dropbox",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "A backup utility for jsnbt installations with a dropbox target.",
 	"author": {
 		"name": "Apostolis Konoupakis",
@@ -18,11 +18,12 @@
 	"license": "MIT",
 	"homepage": "https://github.com/akonoupakis/jsnbt-backup-dropbox",
 	"dependencies": {
-		"dropbox-backup": "^1.0.4",
+		"dropbox-backup": "^1.0.6",
 		"extend": "^3.0.0",
 		"fs-extra": "^0.26.4",
 		"json-validation": "^1.0.4",
-		"server-root": "0.0.10-pre3",
+		"log4js": "^0.6.33",
+		"server-root": "1.0.0",
 		"underscore": "^1.8.3"
 	}
 }
