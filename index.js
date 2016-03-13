@@ -85,7 +85,7 @@ var DatabaseBackupProcessor = function () { };
 DatabaseBackupProcessor.prototype.process = function (ctx, next) {
     ctx.log('dumping database...');
 
-    var args = ['--host', ctx.options.database.host, '--port', ctx.options.database.port.toString(), '--db', ctx.options.database.name, '--out', server.getPath('temp/' + ctx.name + '/db')];
+    var args = ['--host', ctx.options.database.host, '--port', ctx.options.database.port.toString(), '--db', ctx.options.database.name, '--out', server.mapPath('temp/' + ctx.name + '/db')];
     var mongodump = spawn('mongodump', args);
 
     mongodump.on('exit', function (code) {
