@@ -42,7 +42,7 @@ backup.run('test');
 ```
 
 
-## license
+## License
 
     The MIT License (MIT)
 
