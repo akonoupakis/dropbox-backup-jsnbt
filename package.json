@@ -1,6 +1,6 @@
 {
 	"name": "jsnbt-backup-dropbox",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "a backup utility for jsnbt installations with a dropbox target",
 	"author": {
 		"name": "Apostolis Konoupakis",
