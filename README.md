@@ -4,6 +4,7 @@
 ![VERSION](https://img.shields.io/npm/v/jsnbt-backup-dropbox.svg)
 ![DOWNLOADS](https://img.shields.io/npm/dt/jsnbt-backup-dropbox.svg)
 [![ISSUES](https://img.shields.io/github/issues-raw/akonoupakis/jsnbt-backup-dropbox.svg)](https://github.com/akonoupakis/jsnbt-backup-dropbox/issues)
+[![BUILD](https://api.travis-ci.org/akonoupakis/jsnbt-backup-dropbox.svg?branch=master)](http://travis-ci.org/akonoupakis/jsnbt-backup-dropbox)
 ![LICENCE](https://img.shields.io/npm/l/jsnbt-backup-dropbox.svg)
 
 [![NPM](https://nodei.co/npm/jsnbt-backup-dropbox.png?downloads=true)](https://nodei.co/npm/jsnbt-backup-dropbox/)
