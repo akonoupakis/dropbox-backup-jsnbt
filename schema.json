@@ -1,0 +1,42 @@
+{
+    "type": "object",
+    "required": true,
+    "properties": {
+        "files": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "required": true
+                    },
+                    "path": {
+                        "type": "string",
+                        "required": true
+                    }
+                },
+                "required": true
+            },
+            "required": true
+        },
+        "database": {
+            "type": "object",
+            "required": true,
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "required": true
+                },
+                "host": {
+                    "type": "string",
+                    "required": true
+                },
+                "port": {
+                    "type": "number",
+                    "required": true
+                }
+            }
+        }
+    }
+}
