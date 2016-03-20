@@ -41,9 +41,22 @@ backup.use(new JsnbtBackupProcessor({
 }))
 
 // upload the backup to the daily/weekly/monthly folders
-backup.run()
+backup.run(function (x) {
+  x.upload(function (err, res){
+    if (err) {
+      throw err
+    }
+  })
+})
+
 // or upload a single backup as test.zip 
-backup.run('test')
+backup.run('test', function (x) {
+  x.upload(function (err, res){
+    if (err) {
+      throw err
+    }
+  })
+})
 ```
 
 ## copyright and license
