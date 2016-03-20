@@ -1,30 +1,34 @@
-# jsnbt-backup-dropbox
-> a backup utility for jsnbt installations with a dropbox target
+# dropbox-backup-jsnbt
+> a backup-dropbox processor for jsnbt installations
 
-![VERSION](https://img.shields.io/npm/v/jsnbt-backup-dropbox.svg)
-![DOWNLOADS](https://img.shields.io/npm/dt/jsnbt-backup-dropbox.svg)
-[![ISSUES](https://img.shields.io/github/issues-raw/akonoupakis/jsnbt-backup-dropbox.svg)](https://github.com/akonoupakis/jsnbt-backup-dropbox/issues)
-[![BUILD](https://api.travis-ci.org/akonoupakis/jsnbt-backup-dropbox.svg?branch=master)](http://travis-ci.org/akonoupakis/jsnbt-backup-dropbox)
-![LICENCE](https://img.shields.io/npm/l/jsnbt-backup-dropbox.svg)
+![VERSION](https://img.shields.io/npm/v/dropbox-backup-jsnbt.svg)
+![DOWNLOADS](https://img.shields.io/npm/dt/dropbox-backup-jsnbt.svg)
+[![ISSUES](https://img.shields.io/github/issues-raw/akonoupakis/dropbox-backup-jsnbt.svg)](https://github.com/akonoupakis/dropbox-backup-jsnbt/issues)
+![LICENCE](https://img.shields.io/npm/l/dropbox-backup-jsnbt.svg)
 
-[![NPM](https://nodei.co/npm/jsnbt-backup-dropbox.png?downloads=true)](https://nodei.co/npm/jsnbt-backup-dropbox/)
+[![BUILD](https://api.travis-ci.org/akonoupakis/dropbox-backup-jsnbt.svg?branch=master)](http://travis-ci.org/akonoupakis/dropbox-backup-jsnbt)
+![STANDARDJS](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)
+[![DEPENDENCIES](https://david-dm.org/akonoupakis/dropbox-backup-jsnbt.svg)](https://david-dm.org/akonoupakis/dropbox-backup-jsnbt)
+
+[![NPM](https://nodei.co/npm/dropbox-backup-jsnbt.png?downloads=true)](https://nodei.co/npm/dropbox-backup-jsnbt/)
 
 ## overview
 
-This uses dropbox-backup internally, having the same functionality;
-reference [dropbox-backup](https://www.npmjs.com/package/dropbox-backup)
+This module comes as a plugin to the dropbox-backup, to backup the database and the files of jsnbt installations
 
 ## usage
 
 ```js
-var JsnbtBackup = require('jsnbt-backup-dropbox');
+var DropboxBackup = require('dropbox-backup')
+var JsnbtBackupProcessor = require('dropbox-backup-jsnbt')
 
-var backup = new JsnbtBackup({
-    credentials: {
-        key: "DROPBOXKEY",
-        secret: "DROPBOXSECRET",
-        token: "DROPBOXTOKEN"
-    },
+var backup = new DropboxBackup({
+    key: "DROPBOXKEY",
+    secret: "DROPBOXSECRET",
+    token: "DROPBOXTOKEN"
+})
+
+backup.use(new JsnbtBackupProcessor({
     files: [{
         name: 'files',
         path: './www/public/files'
@@ -34,36 +38,14 @@ var backup = new JsnbtBackup({
         host: 'localhost',
         port: 27017
     }
-});
+}))
 
 // upload the backup to the daily/weekly/monthly folders
-backup.run();
+backup.run()
 // or upload a single backup as test.zip 
-backup.run('test');
+backup.run('test')
 ```
 
+## copyright and license
 
-## license
-```
-The MIT License (MIT)
-
-Copyright (c) 2016 akon
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-```
+Code and documentation copyright 2016 akon. Code released under [the MIT license](https://cdn.rawgit.com/akonoupakis/dropbox-backup-jsnbt/master/LICENSE).
