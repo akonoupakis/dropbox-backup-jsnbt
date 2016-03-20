@@ -1,6 +1,6 @@
 {
 	"name": "dropbox-backup-jsnbt",
-	"version": "1.0.10",
+	"version": "1.0.11",
 	"description": "a backup-dropbox processor for jsnbt installations",
 	"author": {
 		"name": "Apostolis Konoupakis",
