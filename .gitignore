@@ -3,3 +3,4 @@
 /test.js
 publish.js
 publish.targets.json
+*.cmd
